@@ -1,4 +1,5 @@
 import time
+import numpy as np
 from PIL import Image
 
 def main(imageName, kernel, showResult):
@@ -24,6 +25,10 @@ def main(imageName, kernel, showResult):
                     accumulatorB += kernel[kerRow][kerCol] * originalPixels[i+len(kernel)//2 - kerRow,j+len(kernel)//2 - kerCol][2]
 
             pixels[i,j] = (int(round(accumulatorR)), int(round(accumulatorG)), int(round(accumulatorB)))
+
+    #next 2 lines are only for debugging
+    res = np.array(img).astype(np.int8)
+    res.tofile("classic.txt")
             
     width, height = img.size
     img = img.crop((len(kernel)//2, len(kernel)//2, width - len(kernel)//2, height - len(kernel)//2))

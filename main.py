@@ -7,10 +7,10 @@ from solutions import CUDASolution
 if __name__ == '__main__':
     imageName = "pictures/"
     imageName += "200.jpg"
-    showResults = 1
+    showResults = 0
     
     #identity
-    #kernel = [[0,0,0],[0,1,0],[0,0,0]]
+    kernel = [[0,0,0],[0,1,0],[0,0,0]]
     
     #edge detection
     #kernel = [[-1,-1,-1],[-1,8,-1],[-1,-1,-1]]
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     for i in range(1, 2):
         RegularSolution.main(imageName, kernel, showResults)
-        RegularSolutionThreads.main(imageName, kernel, showResults)
-    DistributedSolution.main()
-    CUDASolution.main()
+        #RegularSolutionThreads.main(imageName, kernel, showResults)
+        #DistributedSolution.main()
+        CUDASolution.main(imageName, kernel, showResults)
     
